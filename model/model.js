@@ -4,22 +4,24 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-var TaskSchema = new Schema({
-  name: {
-    type: String,
-    required: 'Kindly enter the name of the task'
+var taxentrySchema = new Schema({
+  Rate: {
+    type:String,
+    required: 'Kindly enter the rate of the tax'
   },
-  Created_date: {
-    type: Date,
-    default: Date.now
+  restrictionBased: {
+    type:String
+    
   },
-  status: {
-    type: [{
-      type: String,
-      enum: ['pending', 'ongoing', 'completed']
-    }],
-    default: ['pending']
+  restrictionOfGti: {
+      type: String,    
+  },
+  applicableFrom:{
+type:Date,
+  },
+  applicableTo:{
+    type:Date
   }
 });
 
-module.exports = mongoose.model('Tasks', TaskSchema);
+module.exports = mongoose.model('Tax', taxentrySchema);
